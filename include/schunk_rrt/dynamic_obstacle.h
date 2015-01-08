@@ -1,0 +1,45 @@
+#include <ros/ros.h>
+#include <visualization_msgs/Marker.h>
+#include <sensor_msgs/Joy.h>
+
+class ObstacleMarker
+{
+public:
+
+    ObstacleMarker();
+    ~ObstacleMarker(){}
+
+	ros::NodeHandle n;
+
+private:
+	
+	void callback0(const ros::TimerEvent& event);
+	void callback1(const ros::TimerEvent& event);
+    void callback2(const ros::TimerEvent& event);
+    void callback3(const ros::TimerEvent& event);
+
+	void joy_cb(const sensor_msgs::Joy::ConstPtr& joy_msg);
+
+	//Indicate the state of the button
+	bool isTouch_axes0_;
+	bool isTouch_axes1_;
+    bool isTouch_axes2_;
+    bool isTouch_axes3_;
+
+	geometry_msgs::Point points_;
+
+	visualization_msgs::Marker marker_;	
+
+	ros::Publisher marker_pub_;
+    ros::Publisher position_pub_;
+    ros::Subscriber joy_sub_;
+	
+	ros::Timer timer0_;
+ 	ros::Timer timer1_;
+    ros::Timer timer2_;
+    ros::Timer timer3_;
+
+    bool left, down;
+    double step;
+
+};

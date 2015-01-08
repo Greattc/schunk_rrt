@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- JoyStick Node-->
+	<node name="joy" pkg="joy" type="joy_node"/>
+
+	<!-- Dynamic obstacle Node-->
+	<node name="dynamic_obstacle" pkg="schunk_rrt" type="dynamic_obstacle"/>
+
+	<!-- Show in Rviz-->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d '$(find schunk_rrt)/launch/dynamic_rrt.rviz'"/>
+
+</launch>
